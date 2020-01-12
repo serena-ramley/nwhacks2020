@@ -14,7 +14,8 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background: linear-gradient(rgba(60, 139, 184, 0.81), rgba(60, 139, 184, 0.81)),
+  url('./houseofcommons.png');
   min-height: 100vh;
   display: flex;
   flex-direction: column;

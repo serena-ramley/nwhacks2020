@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
+import './App.css';
 
 
-class ReportCard extends Component {
+class Bill extends Component {
 
     render() {
+      var style = {
+        color: 'white',
+        fontSize: 200
+      };
       return (
-        <div>
+        <div style={style}>
             <h>Bill Name</h>
             <p>Summary of bill...</p>
             <p>Vote info</p>
@@ -14,4 +19,4 @@ class ReportCard extends Component {
     }
   }
 
-export default ReportCard;
+export default Bill;
