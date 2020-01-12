@@ -3,8 +3,8 @@ import './ReportCard.css';
 
 class ReportCard extends Component {
    constructor(props) {
-      super(props) //since we are extending class Table so we have to use super in order to override Component class constructor
-      this.state = { //state is by default an object
+      super(props) 
+      this.state = { 
          votes: [
             { id: 1, bill: 'Should plastic straws be banned?', voted: 'YES'},
             { id: 2, bill: 'Should we increase expenditure on de-icing roads', voted: 'NO'},
@@ -15,7 +15,7 @@ class ReportCard extends Component {
 
     renderTableData() {
         return this.state.votes.map((vote, index) => {
-        const { id, bill, voted } = vote //destructuring
+        const { id, bill, voted } = vote
         return (
             <tr key={id}>
                 <td>{id}</td>
@@ -36,7 +36,7 @@ class ReportCard extends Component {
      render() {
         return (
            <div>
-              <h1 id='title'>React Dynamic Table</h1>
+              <h1 id='title'>MP Report Card</h1>
               <table id='votes'>
                  <tbody>
                     <tr>{this.renderTableHeader()}</tr>

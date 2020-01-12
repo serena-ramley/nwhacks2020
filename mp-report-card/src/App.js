@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import ReportCard from './ReportCard';
+import IssueList from './IssueList';
 
 class App extends Component {
   constructor() {
@@ -19,8 +20,9 @@ class App extends Component {
       return (
       <div className="App">
         <header className="App-header">
-          <h1> Website Title</h1>
-          <ReportCard />
+          <h3> Choose the issues that matter most to you!</h3>
+          <IssueList />
+          <button>Continue</button>
         </header>
       </div>
       )
