@@ -1,0 +1,29 @@
+#title {
+    text-align: center;
+    font-family: arial, sans-serif;
+  }
+  
+  #votes {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #ddd;
+    width: 100%;
+  }
+  
+  #votes td, #votes th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #votes tr:nth-child(even){background-color: #925EAE;}
+  
+  #votes tr:hover {background-color: #5A167F;}
+  
+  #votes th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #5A167F ;
+    color: white;
+  }
