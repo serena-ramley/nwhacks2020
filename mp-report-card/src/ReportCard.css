@@ -1,29 +1,60 @@
 #title {
     text-align: center;
-    font-family: arial, sans-serif;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 94px;
+    
+    color: #FFFFFF;
   }
-  
-  #votes {
-    text-align: center;
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    border: 3px solid #ddd;
-    width: 100%;
-  }
-  
-  #votes td, #votes th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #votes tr:nth-child(even){background-color: #925EAE;}
-  
-  #votes tr:hover {background-color: #D4AF37;}
-  
-  #votes th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #5A167F ;
-    color: white;
-  }
+
+#subtitle {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 41px;
+  color: #000000;
+}
+
+#ratio {
+  border-radius: 10px;
+  padding: 0px
+}
+
+.hr {
+  position: absolute;
+  width: 1168px;
+  height: 0px;
+  left: 1304px;
+  top: 283px;
+
+  border: 4px solid #8DDCCE;
+  transform: rotate(-179.85deg);
+}
+
+#votes {
+  text-align: center;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border: 3px solid #ddd;
+  width: 100%;
+}
+
+#votes td, #votes th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#votes tr:nth-child(even){background-color: #925EAE;}
+
+#votes tr:hover {background-color: #D4AF37;}
+
+#votes th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #5A167F ;
+  color: white;
+}
