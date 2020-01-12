@@ -23,6 +23,7 @@ class App extends Component {
           <h3> Choose the issues that matter most to you!</h3>
           <IssueList />
           <button>Continue</button>
+          <ReportCard />
         </header>
       </div>
       )
