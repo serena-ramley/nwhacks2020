@@ -20,6 +20,10 @@
   color: #000000;
 }
 
+#box {
+  background-color: white;
+}
+
 #ratio {
   border-radius: 10px;
   padding: 0px
