@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import Issue from './Issue.js'
 
 
 class ReportCard extends Component {
@@ -15,14 +16,13 @@ class ReportCard extends Component {
         'margin': '2px',
         'border-radius': '3px',
         'background-color': 'grey',
-        'color': 'white'
+        'color': 'white',
+        'height': '20px'
       };
       return (
         <div>
             {issues.map(issue => (
-              <button style={style}>
-                {issue}
-              </button>
+              < Issue issue={issue} />
             ))}
         </div>
     )

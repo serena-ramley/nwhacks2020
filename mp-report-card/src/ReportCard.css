@@ -1,6 +1,6 @@
 #title {
-    text-align: center;
-    font-family: Roboto;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 80px;
@@ -10,7 +10,9 @@
   }
 
 #subtitle {
-  font-family: Roboto;
+  padding: 20px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 35px;
@@ -27,15 +29,14 @@
   padding: 0px
 }
 
-.hr {
-  position: absolute;
-  width: 1168px;
+#line {
+  position: relative;
+  width: 95%;
   height: 0px;
-  left: 1304px;
-  top: 283px;
+  top: -50px;
+  margin-left: 2%;
 
-  border: 4px solid #8DDCCE;
-  transform: rotate(-179.85deg);
+  border: 2px solid #8DDCCE;
 }
 
 progress {
@@ -81,26 +82,47 @@ progress:after {
 }
 
 #votes {
-  text-align: center;
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
   border-collapse: collapse;
-  border: 3px solid #ddd;
-  width: 100%;
+  width: 90%;
+  margin-left: 5%;
 }
 
 #votes td, #votes th {
-  border: 1px solid #ddd;
   padding: 8px;
 }
 
-#votes tr:nth-child(even){background-color: #925EAE;}
-
-#votes tr:hover {background-color: #D4AF37;}
+#votes tr {
+  background-color: white;
+  color: black
+}
 
 #votes th {
+  height:80px; 
+  overflow:auto;
   padding-top: 12px;
   padding-bottom: 12px;
+  text-align: left;
+  background-color: white;
+  color: black;
+}
+
+#report {
+  background-color: white;
+  margin-bottom: 50px;
+}
+
+#scrollable { 
+  margin-top: 20px; 
+  height: 200px; 
+  overflow: auto;
+}
+#scrollable th div {
+  position: absolute; 
+  margin-top: -20px;
+}
+
+#report p {
   text-align: center;
-  background-color: #5A167F ;
-  color: white;
 }
