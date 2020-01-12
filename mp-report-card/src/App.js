@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
 import ReportCard from './ReportCard';
 import MP from './getMP';
-require('es6-promise').polyfill();
 import IssueList from './IssueList';
+import './App.css';
+//require('es6-promise').polyfill();
 
 class App extends Component {
   constructor() {
