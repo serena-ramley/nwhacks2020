@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import BlankComponent from './BlankComponent';
+import ReportCard from './ReportCard';
 
 class App extends Component {
   constructor() {
@@ -20,8 +20,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1> Website Title</h1>
-          <BlankComponent />
-          <BlankComponent />
+          <ReportCard />
         </header>
       </div>
       )
