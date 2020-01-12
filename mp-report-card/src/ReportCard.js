@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './ReportCard.css';
-import {Rectangle} from 'react-shapes';
 import Issue from './Issue';
 import Bill from './Bill';
 
@@ -71,4 +70,4 @@ class ReportCard extends Component {
      }
 }
 
-export default ReportCard
+export default ReportCard;
