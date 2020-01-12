@@ -42,7 +42,7 @@ class ReportCard extends Component {
               <h1 id='title'>{this.state.representative}</h1>
               <h3 id='subtitle'>Attendance</h3>
               <hr />
-              <progress id="file" max="100" value="70"> 70% </progress>
+              <progress id="file" max="100" value={`${this.state.attendance*100}`}> {this.state.attendance} </progress>
                <p>{Math.floor(this.state.attendance * 100)} %</p>
                <h3 id='subtitle'>Votes</h3>
                <hr />
