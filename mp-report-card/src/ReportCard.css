@@ -1,6 +1,6 @@
 #title {
-    text-align: center;
-    font-family: Roboto;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 80px;
@@ -10,7 +10,9 @@
   }
 
 #subtitle {
-  font-family: Roboto;
+  padding: 20px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 35px;
@@ -47,7 +49,10 @@
   padding: 8px;
 }
 
-#votes tr:nth-child(even){background-color: #925EAE;}
+#votes tr {
+  background-color: white;
+  color: black
+}
 
 #votes tr:hover {background-color: #D4AF37;}
 
@@ -55,6 +60,10 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #5A167F ;
-  color: white;
+  background-color: white;
+  color: black;
+}
+
+#report {
+  background-color: white;
 }

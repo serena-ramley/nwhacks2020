@@ -38,8 +38,9 @@ class ReportCard extends Component {
   
      render() {
         return (
-           <div>
-              <h1 id='title'>{this.state.representative}</h1>
+          <div>
+          <h1 id='title'>{this.state.representative}</h1>
+           <div id="report">
               <h3 id='subtitle'>Attendance</h3>
               <hr />
               <progress id="file" max="100" value="70"> 70% </progress>
@@ -52,6 +53,7 @@ class ReportCard extends Component {
                     {this.renderTableData()}
                  </tbody>
               </table>
+           </div>
            </div>
         )
      }

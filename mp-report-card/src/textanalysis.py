@@ -57,8 +57,8 @@ def get_bill_summary(bill):
     parser.feed(html_text)
 get_bill_summary("/bills/38-1/C-357/")
 
+
 def key_phrases():
-    
     client = authenticateClient()
 
     try:
