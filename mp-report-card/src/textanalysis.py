@@ -2,11 +2,12 @@
 
 import os
 import urllib.request, json
+import get_keys
 from html.parser import HTMLParser
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 
-subscription_key = "0216dbfe33f4479b82fd57bd9154a1cb"
+subscription_key = get_keys.get_azure_key()
 endpoint = "https://bills.cognitiveservices.azure.com/"
 
 class Bill:
@@ -18,14 +19,29 @@ class MyHTMLParser(HTMLParser):
 
     def handle_starttag(self, tag, attrs):
         for (name, value) in attrs:
-            if((name == 'lang' and value == 'EN-CA') or (name == 'class' and value == 'Section')):
-                self.should_read = True
-            else:
+            if(name == 'lang' and value[:2] == 'FR'):
                 self.should_read = False
+            else:
+                self.should_read = True
+                self.tag_type = tag
 
     def handle_data(self, data):
-        if(not data.isspace() and self.should_read and len(data) > 1):
-            print(data)
+        data = data + " "
+        try:
+            if(not data.isspace() and self.should_read and len(data) > 1):
+                try:
+                    self.data += data
+                except:
+                    self.data = data
+        except:
+            self.should_read = False
+
+    def handle_endtag(self, tag):
+        try:
+            if(tag==self.tag_type):
+                self.should_read = False
+        except:
+            pass
 
 def authenticateClient():
     credentials = CognitiveServicesCredentials(subscription_key)
@@ -34,7 +50,7 @@ def authenticateClient():
     return text_analytics_client
 
 
-def all_bills():
+def bill_chunks():
     bills = []
     next_url = "http://api.openparliament.ca/bills/?format=json"
     while(next_url != None):
@@ -44,8 +60,29 @@ def all_bills():
             bills.append(Bill(data['objects']['name']['en'], data['objects']['url']))
     return bills
 
+def get_docs(bill):
+    """splits the bill into max 5120 character docs and doesn't split words"""
+    doc_list = []
+    if(len(bill)<=5120):
+        return [bill]
+    i = 5119
+    while(bill[i] != " " and i > 0):
+        i -= 1
+    if(i==0):
+        i = 5120
+
+    doc_list.append(bill[:i])
+    doc_list.extend(get_docs(bill[i:]))
+    return doc_list
+
+
+
 def get_bill_summary(bill):
+    bill = bill[:4] + "/" + bill[5:]
+    bill = bill.upper()
+    bill = "/bills/" + bill
     bill_url = "http://api.openparliament.ca" + bill + "?format=json"
+    print(bill_url)
     with urllib.request.urlopen(bill_url) as url:
         data = json.loads(url.read().decode())
         bill_text_url = data['text_url']
@@ -55,35 +92,42 @@ def get_bill_summary(bill):
 
     parser = MyHTMLParser()
     parser.feed(html_text)
-get_bill_summary("/bills/38-1/C-357/")
+    bill_txt = parser.data
+    bill_txt = bill_txt[:bill_txt.find("Senate House of Commons Library of Parliament Employment at Parliament Important Notices")]
+    doc_list = get_docs(bill_txt)
+    return key_phrases(doc_list)
 
-def key_phrases():
-    
+
+
+def key_phrases(doc_list):
+    retList = []
+
     client = authenticateClient()
+    print(type(client))
 
     try:
-        documents = [
-            {"id": "1", "language": "ja", "text": "猫は幸せ"},
-            {"id": "2", "language": "de",
-                "text": "Fahrt nach Stuttgart und dann zum Hotel zu Fu."},
-            {"id": "3", "language": "en",
-                "text": "My cat might need to see a veterinarian."},
-            {"id": "4", "language": "es", "text": "A mi me encanta el fútbol!"}
-        ]
+        documents = []
+        i = 1
+        for d in doc_list:
+            documents.append({"id": str(i), "language": "en", "text": d})
+            i += 1
+
 
         for document in documents:
             print(
-                "Asking key-phrases on '{}' (id: {})".format(document['text'], document['id']))
+                "Asking key-phrases on document {}".format(document['id']))
 
-        response = client.key_phrases(documents=documents)
+        response = client.key_phrases(documents=documents, maxKeyPhraseCount=5)
 
         for document in response.documents:
-            print("Document Id: ", document.id)
-            print("\tKey Phrases:")
+            #print("Document Id: ", document.id)
+            #print("\tKey Phrases:")
+            document.key_phrases = document.key_phrases[:4]
             for phrase in document.key_phrases:
-                print("\t\t", phrase)
+                #print("\t\t", phrase)
+                retList.append(phrase)
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
-key_phrases()
-
+    return json.dumps(retList)
+#get_bill_summary("/bills/42-1/C-45/")
