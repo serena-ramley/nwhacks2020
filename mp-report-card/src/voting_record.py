@@ -1,4 +1,6 @@
 import urllib.request, json
+from flask import Flask
+app = Flask(__name__)
 
 class MP:
     """A Member of Parliament"""
@@ -29,5 +31,9 @@ class MP:
         num_absences = len(list(filter(lambda x : x[1] == "Didn't vote", self.vote_record)))
         return 1 - num_absences/len(self.vote_record)
 
-chandra = MP("/politicians/justin-trudeau")
-print(chandra.get_attendance())
+@app.route('/get_attendance/<name>')
+def get_MP_attendance(name):
+    ret = MP("/politicians/" + name).get_attendance()
+    return str(ret)
+
+app.run()
