@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './App.css';
 import ReportCard from './ReportCard';
+import MP from './getMP';
+require('es6-promise').polyfill();
 
 class App extends Component {
   constructor() {
@@ -21,6 +23,7 @@ class App extends Component {
         <header className="App-header">
           <h1> Website Title</h1>
           <ReportCard />
+          <MP/>
         </header>
       </div>
       )
