@@ -7,8 +7,8 @@ class ReportCard extends Component {
       super(props) 
       this.state = { 
          votes: [
-            { id: 1, bill: 'Should plastic straws be banned?', voted: 'YES'},
-            { id: 2, bill: 'Should we increase expenditure on de-icing roads', voted: 'NO'},
+            { id: 1, bill: 'Should plastic straws be banned?', voted: 'VOTED YES'},
+            { id: 2, bill: 'Should we increase expenditure on de-icing roads', voted: 'VOTED NO'},
             { id: 3, bill: 'Should residents be allowed to build & rent secondary homes on their property?', voted: "DIDN'T VOTE"},
          ],
          representative: "Justin Trudeau",
@@ -21,7 +21,6 @@ class ReportCard extends Component {
         const { id, bill, voted } = vote
         return (
             <tr key={id}>
-                <td>{id}</td>
                 <td>{bill}</td>
                 <td>{voted}</td>
             </tr>
@@ -29,12 +28,14 @@ class ReportCard extends Component {
         })
     }
 
+    /*
     renderTableHeader() {
         let header = Object.keys(this.state.votes[0])
         return header.map((key, index) => {
            return <th key={index}>{key.toUpperCase()}</th>
         })
      }
+     */
   
      render() {
         return (
@@ -47,12 +48,14 @@ class ReportCard extends Component {
                <p>{Math.floor(this.state.attendance * 100)} %</p>
                <h3 id='subtitle'>Votes</h3>
                <hr />
+               <div id="scrollable">
               <table id='votes'>
                  <tbody>
-                    <tr>{this.renderTableHeader()}</tr>
+                    <tr></tr>
                     {this.renderTableData()}
                  </tbody>
               </table>
+              </div>
            </div>
            </div>
         )
